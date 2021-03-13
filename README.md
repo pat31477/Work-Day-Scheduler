@@ -41,8 +41,13 @@ A simple work day scheduler that allows a user to save events for each hour of t
 - Each time block has an input field and save button where users can store their schedule.
 - Once it saved, it will store in their local storage.
 
-## Mock-Up
-![](assets/images/05-third-party-apis-homework-demo.gif)
+## Full Screen
+![](Assets/Images/FullPageApp.png?raw=true)
+
+- Added a "Clear All" button to clear the screen and local storage
+
+## Clear Button
+![](Assets/Images/ClearButton.png?raw=true)
 
 
 ## Acknowledgements:
