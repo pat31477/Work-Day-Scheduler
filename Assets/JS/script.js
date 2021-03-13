@@ -1,114 +1,51 @@
-window.onload = function(){
-    colorCode();
-    nineAM();
-    tenAM();
-    elevenAM();
-    twelvePM();
-    onePM();
-    twoPM();
-    threePM();
-    fourPM();
-    fivePM();
-   }
-  
-  // WHEN I open the planner
-  // THEN the current day and time is displayed at the top of the calendar
-  let updateTime = function () {
-    let currentTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss A")
-    $("#currentDay").text(currentTime)
+// display current day on page
+$("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss A"));
+
+$(document).ready(function() {
+  // listen for save button clicks
+  $(".saveBtn").on("click", function() {
+   
+  });
+
+  function hourUpdater() {
+    // get current number of hours
+    let currentHour = moment().hours();
+
+    // loop over time blocks
+    $(".time-block").each(function() {
+      let blockHour = parseInt($(this).attr("id").split("-")[1]);
+
+      // check if we've moved past this time
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+      } 
+      else if (blockHour === currentHour) {
+        $(this).removeClass("past");
+        $(this).addClass("present");
+      } 
+      else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future");
+      }
+    });
   }
-  
-  setInterval(updateTime, 1000);
-  
-  // WHEN I scroll down
-  // THEN I am presented with timeblocks for standard business hours
-  // WHEN I view the timeblocks for that day
-  // THEN each timeblock is color coded to indicate whether it is in the past (gray), present (red), or future (green)
-  
-  let now = new Date().getHours();
-  
-  function colorCode() {
-    if (now > 9) {
-      $("#comment9am").addClass("past");
-    } else if (now >= 9 && now < 10) {
-      $("#comment9am").addClass("present");
-    } else if (now < 9) {
-      $("#comment9am").addClass("future");
-    }
-    if (now > 10) {
-      $("#comment10am").addClass("past");
-    } else if (now >= 10 && now < 11) {
-      $("#comment10am").addClass("present");
-    } else if (now < 10) {
-      $("#comment10am").addClass("future");
-    }
-    if (now > 11) {
-      $("#comment11am").addClass("past");
-    } else if (now >= 11 && now < 12) {
-      $("#comment11am").addClass("present");
-    } else if (now < 11) {
-      $("#comment11am").addClass("future");
-    }
-    if (now > 12) {
-      $("#comment12pm").addClass("past");
-    } else if (now >= 12 && now < 13) {
-      $("#comment12pm").addClass("present");
-    } else if (now < 12) {
-      $("#comment12pm").addClass("future");
-    }
-    if (now > 13) {
-      $("#comment1pm").addClass("past");
-    } else if (now >= 13 && now < 14) {
-      $("#comment1pm").addClass("present");
-    } else if (now < 13) {
-      $("#comment1pm").addClass("future");
-    }
-    if (now > 14) {
-      $("#comment2pm").addClass("past");
-    } else if (now >= 14 && now < 15) {
-      $("#comment2pm").addClass("present");
-    } else if (now < 14) {
-      $("#comment2pm").addClass("future");
-    }
-    if (now > 15) {
-      $("#comment3pm").addClass("past");
-    } else if (now >= 15 && now < 16) {
-      $("#comment3pm").addClass("present");
-    } else if (now < 15) {
-      $("#comment3pm").addClass("future");
-    }
-    if (now > 16) {
-      $("#comment4pm").addClass("past");
-    } else if (now >= 16 && now < 17) {
-      $("#comment4pm").addClass("present");
-    } else if (now < 16) {
-      $("#comment4pm").addClass("future");
-    }
-    if (now > 17) {
-      $("#comment5pm").addClass("past");
-    } else if (now >= 17 && now < 18) {
-      $("#comment5pm").addClass("present");
-    } else if (now < 17) {
-      $("#comment5pm").addClass("future");
-    }
-  }
-  
-  
-function nineAM() {
-  let input_textarea = document.querySelector("#comment9am");
-  let output_div = document.querySelector("#comment9am");
-  let save_button = document.querySelector("#button9am");
 
-  save_button.addEventListener("click", updateOutput);
+  hourUpdater();
 
-  output_div.textContent = localStorage.getItem("content");
-  input_textarea.value = localStorage.getItem("content");
+  // set up interval to check if current time needs to be updated
+  let interval = setInterval(hourUpdater, 15000);
 
-  function updateOutput() {
-    localStorage.setItem("content", input_textarea.value);
+  // load any saved data from localStorage
+  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+  $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
-    output_div.textContent = input_textarea.value;
-  }
-}
-
-
+  
+});
