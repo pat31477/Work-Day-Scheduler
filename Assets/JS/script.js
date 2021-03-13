@@ -1,6 +1,12 @@
 // display current day on page
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss A"));
 
+//button to clear local storage and refresh the page
+$("#clear").click(function() {
+  localStorage.clear();
+  location.reload()
+});
+
 $(document).ready(function() {
   // listen for save button clicks
   $(".saveBtn").on("click", function() {
