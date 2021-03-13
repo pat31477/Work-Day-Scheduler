@@ -4,7 +4,12 @@ $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss A"));
 $(document).ready(function() {
   // listen for save button clicks
   $(".saveBtn").on("click", function() {
-   
+   // get nearby values
+   let value = $(this).siblings(".description").val();
+   let time = $(this).parent().attr("id");
+
+   // save in localStorage
+   localStorage.setItem(time, value);
   });
 
   function hourUpdater() {
