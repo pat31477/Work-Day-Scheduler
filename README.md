@@ -10,6 +10,9 @@
 ## Description
 A simple work day scheduler that allows a user to save events for each hour of the day. The application runs in the browser and features dynamically updated HTML and CSS powered by jQuery.
 
+## Technology Used
+A simple work day sche
+
 ## User Story
 ```
 - AS AN employee with a busy schedule
