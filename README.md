@@ -54,13 +54,13 @@ A simple work day scheduler that allows a user to save events for each hour of t
 
 Thank you to the following for their suggestions and insights.
 
-Ben Durham
+* Steve Marsh (https://github.com/Imaparadox)
 
-Gabe Thomas
+* Ben Durham (https://github.com/bdurham227)
 
-Jason Barbanel
+* Gabe Thomas (https://github.com/samohtebag)
 
-Takuya Matsumoto
+* Jason Barbanel (https://github.com/Jbarbss)
 
-Steve Marsh
+* Takuya Matsumoto (https://github.com/TakuyaMats)
 - - -
